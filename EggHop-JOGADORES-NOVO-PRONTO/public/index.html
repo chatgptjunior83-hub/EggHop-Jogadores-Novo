@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#090d1b" />
+  <meta name="description" content="Encontre servidores públicos do Roube um Ovo (Steal An Egg) com filtros por jogadores e vagas. Feito para celular." />
+  <title>EggHop — Server Hop para Roube um Ovo</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/access.css" />
+  <script src="/app.js" defer></script>
+  <script src="/access.js" defer></script>
+</head>
+<body class="is-locked">
+  <div id="accountBar" class="access-account" hidden><span>✓ Acesso aprovado: <strong id="activeAccount">—</strong></span><button id="accessExit" type="button">Ajuda</button></div>
+  <div class="access-shade" id="accessGate">
+    <div class="access-box" role="region" aria-labelledby="gateTitle">
+      <div class="access-emblem">🥚</div>
+      <span class="access-eyebrow">EGGHOP • ENTRADA EXCLUSIVA</span>
+      <h1 id="gateTitle">Seu acesso começa <span>aqui.</span></h1>
+      <p class="access-intro">Mande seu nick do Roblox ao dono pelo TikTok e digite o mesmo nome abaixo. O dono vai conferir e decidir se libera seu Server Hop. Depois da aprovação, o nick fica reservado a este navegador.</p>
+      <div class="access-step" id="gateLoading"><div class="access-alert">Verificando acesso...</div></div>
+      <form id="requestForm" class="access-step" hidden>
+        <label for="robloxNick">Seu nick do Roblox</label>
+        <input id="robloxNick" type="text" required maxlength="20" minlength="3" pattern="[A-Za-z0-9_]{3,20}" placeholder="Ex.: fipinho393939" autocomplete="off" spellcheck="false" autocapitalize="none" />
+        <button id="requestBtn" class="access-main-button" type="submit">Solicitar acesso <span>→</span></button>
+        <p class="access-help">Digite o <strong>nome de usuário</strong> do Roblox, não o nome de exibição. Não pedimos senha nem login.</p>
+      </form>
+      <div class="access-step" id="pendingPanel" hidden>
+        <div class="access-alert">⏳ Pedido aguardando aprovação.</div>
+        <p class="user-nick">Nick: <strong id="pendingNick">—</strong></p>
+        <p class="code-label">Envie ao dono pelo TikTok seu nick e este código:</p>
+        <div class="verification-code" id="pendingCode">—— ——</div>
+        <button type="button" class="access-main-button" id="copyPending">Copiar nick e código</button>
+        <p class="access-help">O dono vai comparar o código do site com a mensagem que você mandar. A página confere a aprovação automaticamente.</p>
+        <button type="button" class="access-secondary-button" id="manualRefresh">Verificar novamente ↻</button>
+      </div>
+      <div class="access-step" id="blockedPanel" hidden>
+        <div class="access-alert danger">⛔ Seu acesso não foi liberado ou foi bloqueado. Fale com o dono pelo TikTok para tirar dúvidas.</div>
+      </div>
+      <div class="access-step" id="configPanel" hidden><div class="access-alert">⚙️ Para ativar os pedidos, o dono precisa publicar o site na Netlify e configurar SESSION_SECRET e ADMIN_BRIDGE_SECRET. Consulte o README.</div></div>
+      <p id="accessNotice" class="access-notice" role="status" aria-live="polite"></p>
+      <div class="access-footnote"><span>🔐 Aprovação manual</span><span>Sem login do Roblox</span></div>
+    </div>
+  </div>
+  <div class="ambient ambient-a" aria-hidden="true"></div><div class="ambient ambient-b" aria-hidden="true"></div>
+  <div class="app-shell">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="EggHop - Início">
+        <div class="brand-egg" aria-hidden="true"><svg width="29" height="32" viewBox="0 0 29 32" fill="none"><path d="M14.5 2C8.8 2 3.7 11.4 3.7 18.5c0 6.8 4.9 11.5 10.8 11.5s10.8-4.7 10.8-11.5C25.3 11.4 20.2 2 14.5 2Z" fill="#FFC84E"/><path d="M9.3 9.7c-1.8 2.9-2.8 5.8-2.8 8.2" stroke="#FFE59A" stroke-width="3" stroke-linecap="round"/><circle cx="11.4" cy="18.7" r="1.4" fill="#4D341A"/><circle cx="18" cy="18.7" r="1.4" fill="#4D341A"/><path d="M12.1 22c1.5 1.4 3.7 1.4 5.2 0" stroke="#4D341A" stroke-linecap="round" stroke-width="1.5"/></svg></div>
+        <div><span class="brand-title">EGG<span>HOP</span><span class="brand-dot">.</span></span><span class="brand-caption">SERVER FINDER</span></div>
+      </a>
+      <span class="header-status"><span class="status-light"></span>ROUBE UM OVO · NOVO</span>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <div class="eyebrow"><span class="sparkle">✦</span> SEU PRÓXIMO SERVIDOR EM SEGUNDOS</div>
+          <h1>Encontre o servidor <span>ideal para jogar.</span></h1>
+          <p>Filtre servidores públicos de <strong>Roube um Ovo</strong>, encontre salas com menos jogadores e tente entrar direto pelo celular.</p>
+          <div class="hero-chips"><span>🥚 Steal An Egg</span><span>📱 Feito para celular</span><span>⚡ Consulta em tempo real*</span></div>
+        </div>
+        <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="egg-main"><div class="egg-shine"></div><span>🥚</span></div><div class="orbit-star star-one">✦</div><div class="orbit-star star-two">✦</div><div class="orbit-star star-three">✧</div></div>
+      </section>
+
+      <div class="main-grid">
+        <section class="panel filter-panel" aria-labelledby="filter-title">
+          <div class="section-heading"><div class="head-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16M7 12h10m-7 5h4"/><circle cx="8" cy="7" r="2"/><circle cx="16" cy="12" r="2"/></svg></div><div><h2 id="filter-title">Buscar servidores</h2><p>Personalize sua busca</p></div></div>
+          <div class="game-card"><div class="game-thumbnail">🥚</div><div class="game-details"><span>EXPERIÊNCIA SELECIONADA</span><strong>Roube um Ovo <i class="verify-dot" aria-label="jogo identificado">✓</i></strong><small>Steal An Egg · Roblox</small></div><span class="game-locked" title="Jogo configurado">✓</span></div>
+
+          <div class="fields">
+            <div class="field"><label for="minSlots">Mínimo de vagas</label><div class="field-control"><span class="input-glyph">▣</span><input id="minSlots" type="number" inputmode="numeric" min="1" max="7" value="1" aria-describedby="slot-help" /></div><small id="slot-help" class="field-hint">De 1 a 7 vagas</small></div>
+            <div class="field"><label for="playerCount">Servidor com</label><div class="select-wrap"><select id="playerCount"><option value="any">Qualquer quantidade</option><option value="1">1 jogador</option><option value="2">2 jogadores</option><option value="3">3 jogadores</option><option value="4">4 jogadores</option><option value="5">5 jogadores</option><option value="6">6 jogadores</option></select><span class="select-chevron" aria-hidden="true">⌄</span></div></div>
+            <div class="field full-row"><label for="sortBy">Ordenar por</label><div class="select-wrap"><select id="sortBy"><option value="fewest">Menos jogadores primeiro</option><option value="slots">Mais vagas primeiro</option><option value="most">Mais jogadores primeiro</option><option value="random">Ordem aleatória</option></select><span class="select-chevron" aria-hidden="true">⌄</span></div></div>
+          </div>
+
+          <div class="actions"><button class="button button-primary" id="hopButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10H7zM4 12h3m10 0h3M12 4v3m0 10v3"/></svg><span>Server Hop</span><span class="button-arrow">↗</span></button><button class="button button-secondary" id="refreshButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.4-5.7M20 4v5h-5"/></svg>Atualizar</button></div>
+          <div id="statusMessage" class="status-message" role="status" aria-live="polite">Toque em <b>Atualizar</b> para buscar os servidores.</div>
+          <div class="helper"><span class="helper-icon">i</span><span>O Server Hop escolhe um servidor com vagas entre os resultados carregados. O Roblox precisa estar instalado para abrir o aplicativo.</span></div>
+        </section>
+
+        <section class="results-column" aria-labelledby="servers-title">
+          <div class="metrics" aria-label="Estatísticas da busca"><div class="metric"><div class="metric-icon metric-blue">▣</div><div><strong id="metricServers">—</strong><span>servidores encontrados</span></div></div><div class="metric"><div class="metric-icon metric-orange">♟</div><div><strong id="metricPlayers">—</strong><span>jogadores nas salas</span></div></div><div class="metric"><div class="metric-icon metric-green">↗</div><div><strong id="metricSlots">—</strong><span>maior nº de vagas</span></div></div></div>
+          <div class="panel results-panel"><div class="results-header"><div><div class="results-topline">RESULTADOS EM TEMPO REAL*</div><h2 id="servers-title">Servidores disponíveis</h2></div><span class="page-badge" id="pageBadge">0 páginas</span></div>
+            <div class="results-toolbar"><span id="resultSummary">Nenhuma consulta feita</span><span class="filter-marker"><span class="filter-dot"></span>Filtro ativo</span></div>
+            <div id="results" class="results" aria-live="polite"><div class="empty-state"><div class="empty-icon">🥚</div><h3>Pronto para encontrar servidores?</h3><p>Toque em Atualizar para carregar a lista de servidores públicos.</p></div></div>
+            <div class="results-footer"><button type="button" class="load-more" id="loadMoreButton" hidden>Carregar mais servidores <span>↓</span></button><span id="paginationNote">* As vagas podem mudar entre a busca e a entrada.</span></div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer"><span><strong>EGGHOP</strong> © 2026 · Feito para a comunidade</span><span>Ferramenta independente, não afiliada ao Roblox. <a href="https://www.roblox.com/games/107778070777162/Steal-An-Egg" target="_blank" rel="noopener noreferrer">Ver jogo oficial ↗</a></span></footer>
+  </div>
+
+  <div class="modal-backdrop" id="joinModal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button id="closeModal" class="modal-close" type="button" aria-label="Fechar">×</button><div class="modal-emoji">🚀</div><h2 id="modalTitle">Abrindo o Roblox...</h2><p id="modalDescription">Tentamos abrir o servidor no aplicativo. Se nada acontecer, toque em um dos botões abaixo.</p><div class="modal-server" id="modalServerInfo"></div><a id="openAppLink" class="button button-primary modal-link" href="#">Abrir no aplicativo ↗</a><a id="openWebLink" class="button button-secondary modal-link" href="#" target="_blank" rel="noopener noreferrer">Tentar pelo navegador ↗</a><button class="copy-id" id="copyJobButton" type="button">Copiar ID do servidor</button><p class="modal-warning">A entrada na sala exata depende do aplicativo Roblox e de a vaga continuar disponível.</p></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

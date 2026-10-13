@@ -1,0 +1,8 @@
+{
+  "name": "egghop-jogadores-novo",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node scripts/check.mjs"},
+  "dependencies": {"@netlify/blobs": "^11.1.0"}
+}

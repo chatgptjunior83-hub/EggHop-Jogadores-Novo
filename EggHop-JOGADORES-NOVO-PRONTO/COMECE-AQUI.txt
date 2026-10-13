@@ -1,0 +1,7 @@
+NOVO EGGHOP - SITE DOS JOGADORES
+
+O ZIP já vem com os arquivos na RAIZ.
+Publique em um novo repositório GitHub e importe o repo pela Netlify.
+Leia README.md para configurar duas variáveis e apontar PLAYER_SITE_URL do seu painel admin para a URL nova.
+Não use upload do ZIP fechado no GitHub.
+Não apague o site antigo até testar.
